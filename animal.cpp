@@ -171,22 +171,22 @@ istream& operator>> (istream &is, Anfibio &a) {
 	getline(is,line);			
 	istringstream iss(line);
 
-	iss >> a.id;						//ID do animal
-	iss.ignore();						//Ignora o ponto-e-vírgula
-	getline(iss, a.classe, ';'); 		//Classe do animal
-	getline(iss, a.nome, ';');			//Nome do animal
-    getline(iss, a.cientifico, ';');	//Nome científico do animal
-    iss >> a.sexo;						//Sexo do animal
-    iss.ignore();						//Ignora o ponto-e-vírgula
-    iss >> a.tamanho;					//Tamanho do animal
-    iss.ignore();						//Ignora o ponto-e-vírgula
-    getline(iss, a.dieta, ';');    		//Dieta do animal
+	iss >> a.id;						
+	iss.ignore();						
+	getline(iss, a.classe, ';'); 		
+	getline(iss, a.nome, ';');			
+    getline(iss, a.cientifico, ';');	
+    iss >> a.sexo;						
+    iss.ignore();						
+    iss >> a.tamanho;					
+    iss.ignore();						
+    getline(iss, a.dieta, ';');    		
     //iss >> v->id;
     iss.ignore();
     //iss >> t->id;
     iss.ignore();
     //
-    getline(iss, a.batismo, ';'); 		//Nome de batismo do animal
+    getline(iss, a.batismo, ';'); 	
     iss >> a.total_mudas;
     iss.ignore();
     getline(iss, a.ultima_muda);
@@ -281,19 +281,19 @@ void Reptil::setTipoVeneno(string tv) {
 	getline(is,line);			
 	istringstream iss(line);
 
-	iss >> r.id;						//ID do animal
-	iss.ignore();						//Ignora o ponto-e-vírgula
-	getline(iss, r.classe, ';'); 		//Classe do animal
-	getline(iss, r.nome, ';');			//Nome do animal
-    getline(iss, r.cientifico, ';');	//Nome científico do animal
-    iss >> r.sexo;						//Sexo do animal
-    iss.ignore();						//Ignora o ponto-e-vírgula
-    iss >> r.tamanho;					//Tamanho do animal
-    iss.ignore();						//Ignora o ponto-e-vírgula
-    getline(iss, r.dieta, ';');    		//Dieta do animal
+	iss >> r.id;						
+	iss.ignore();						
+	getline(iss, r.classe, ';'); 		
+	getline(iss, r.nome, ';');		
+    getline(iss, r.cientifico, ';');	
+    iss >> r.sexo;					
+    iss.ignore();						
+    iss >> r.tamanho;					
+    iss.ignore();						
+    getline(iss, r.dieta, ';');    		
     //
     //
-    getline(iss, r.batismo, ';'); 		//Batismo do animal
+    getline(iss, r.batismo, ';'); 		
     iss >> r.venenoso;
     iss.ignore();
     getline(iss, r.tipo_veneno);
@@ -331,19 +331,19 @@ void Ave::setEnvergadura(int e) {
 	getline(is,line);			
 	istringstream iss(line);
 
-	iss >> a.id;						//ID do animal
-	iss.ignore();						//Ignora o ponto-e-vírgula
-	getline(iss, a.classe, ';'); 		//Classe do animal
-	getline(iss, a.nome, ';');			//Nome do animal
-    getline(iss, a.cientifico, ';');	//Nome científico do animal
-    iss >> a.sexo;						//Sexo do animal
-    iss.ignore();						//Ignora o ponto-e-vírgula
-    iss >> a.tamanho;					//Tamanho do animal
-    iss.ignore();						//Ignora o ponto-e-vírgula
-    getline(iss, a.dieta, ';');    		//Dieta do animal
+	iss >> a.id;						
+	iss.ignore();						
+	getline(iss, a.classe, ';'); 		
+	getline(iss, a.nome, ';');			
+    getline(iss, a.cientifico, ';');	
+    iss >> a.sexo;						
+    iss.ignore();						
+    iss >> a.tamanho;					
+    iss.ignore();						
+    getline(iss, a.dieta, ';');    		
     //
     //
-    getline(iss, a.batismo, ';'); 		//Batismo do animal
+    getline(iss, a.batismo, ';'); 		
     iss >> a.tamanho_bico;
     iss.ignore();
     iss >> a.envergadura;
