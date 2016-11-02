@@ -24,13 +24,13 @@ void CadastroGeral() {
 	petfera.open("petfera");
 
 	if(!petfera){
-		cerr << "The file wasn't found" << endl;
-		cerr << "The program will terminate" << endl;
+		cerr << "O arquivo não foi encontrado" << endl;
+		cerr << "O programa será finalizado" << endl;
 		exit(1);
 	}
  	else {
 
- 	Animal* a;
+ 	Animal* a = new Anfibio;
 
  	int id;
 	string classe, nome;
@@ -40,22 +40,8 @@ void CadastroGeral() {
 	getline(petfera, classe, ';');
 	getline(petfera, nome, ';');
 
-	if(classe == "Amphibia") {
-		
-		a = new Anfibio;
-
-		a->setId(id);
-		a->setClasse(classe);
-		a->setNome(nome);
-		
-		//petfera >> a;
-		//cout << a;
-		
-
-
-		//a->Cadastro(petfera);
-		//a->Consulta(a);
-		}
+	//petfera >> a;
+	cout << a;
 	}
 }
 
@@ -81,9 +67,5 @@ int main() {
 
  	CadastroGeral();
 
-
-
-
-	//Animal* anfibios = new Anfibio[10];
 	return 0;
 }

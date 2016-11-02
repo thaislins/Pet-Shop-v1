@@ -54,7 +54,6 @@ class Animal {
 		//virtual void Remove() = 0;
 		//virtual void Alteracao() = 0;
 		virtual void Consulta(Animal *a) = 0;
-
 };
 
 class Anfibio : public Animal {
@@ -76,7 +75,7 @@ class Anfibio : public Animal {
 		void Consulta(Animal *a);
 
 		friend istream& operator>> (istream &is, Anfibio &a);
-		friend ostream& operator<< (ostream &os, Anfibio const a);
+		friend ostream& operator<< (ostream &os, Anfibio &a);
 
 };
 
@@ -106,7 +105,7 @@ class Reptil : public Animal {
 		string getTipoVeneno();
 		void setTipoVeneno(string tv);
 
-		friend istream& operator>> (istream &is, Reptil &r);
+		//friend istream& operator>> (istream &is, Reptil &r);
 };
 
 class Ave : public Animal {
@@ -121,7 +120,7 @@ class Ave : public Animal {
 		int getEnvergadura();
 		void setEnvergadura(int e);
 
-		friend istream& operator>> (istream &is, Ave &a); 
+		//friend istream& operator>> (istream &is, Ave &a); 
 };
 
 

@@ -119,10 +119,6 @@ void Animal::setBatismo(string b) {
 	batismo = b;
 }
 
-
-
-
-
 //Anfíbio
 Anfibio::Anfibio() {
 	total_mudas = 0;
@@ -168,6 +164,9 @@ void Anfibio::Consulta(Animal *a) {
 
 istream& operator>> (istream &is, Anfibio &a) {
 	
+	//Veterinario* v = a.getVeterinario();
+	//Tratador* t = a.getTratador();
+
 	string line;
 	getline(is,line);			
 	istringstream iss(line);
@@ -182,7 +181,10 @@ istream& operator>> (istream &is, Anfibio &a) {
     iss >> a.tamanho;					//Tamanho do animal
     iss.ignore();						//Ignora o ponto-e-vírgula
     getline(iss, a.dieta, ';');    		//Dieta do animal
-    //
+    //iss >> v->id;
+    iss.ignore();
+    //iss >> t->id;
+    iss.ignore();
     //
     getline(iss, a.batismo, ';'); 		//Nome de batismo do animal
     iss >> a.total_mudas;
@@ -192,7 +194,7 @@ istream& operator>> (istream &is, Anfibio &a) {
     return is;
 }
 
-ostream& operator<< (ostream &os, Anfibio const a) {
+ostream& operator<< (ostream &os, Anfibio &a) {
 
 	os << "ID do Animal: " << a.id << endl;
 	os << "Classe do Animal: " << a.classe << endl;	
@@ -207,13 +209,6 @@ ostream& operator<< (ostream &os, Anfibio const a) {
 
 	return os;
 }
-
-
-
-
-
-
-
 
 //Mamífero
 Mamifero::Mamifero() {
@@ -258,15 +253,6 @@ istream& operator>> (istream &is, Mamifero &m) {
     return is;
 }
 
-
-
-
-
-
-
-
-
-
 //Reptil
 Reptil::Reptil() {
 	venenoso = false;
@@ -289,7 +275,7 @@ void Reptil::setTipoVeneno(string tv) {
 	tipo_veneno = tv;
 }
 
-istream& operator>> (istream &is, Reptil &r) {
+/*istream& operator>> (istream &is, Reptil &r) {
 
 	string line;
 	getline(is,line);			
@@ -315,17 +301,7 @@ istream& operator>> (istream &is, Reptil &r) {
 
 
     return is;
-}
-
-
-
-
-
-
-
-
-
-
+}*/
 
 //Ave
 Ave::Ave() {
@@ -349,7 +325,7 @@ void Ave::setEnvergadura(int e) {
 	envergadura = e;
 }
 
-istream& operator>> (istream &is, Ave &a) {
+/*istream& operator>> (istream &is, Ave &a) {
 
 	string line;
 	getline(is,line);			
@@ -373,4 +349,4 @@ istream& operator>> (istream &is, Ave &a) {
     iss >> a.envergadura;
 
     return is;
-}
+}*/
