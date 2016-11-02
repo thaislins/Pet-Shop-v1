@@ -3,7 +3,7 @@
 
 PROG = petfera
 CC = g++
-CPPFLAGS = -Wall -pedantic
+CPPFLAGS = -Wall -pedantic -std=c++11
 OBJS = main.o funcionario.o animal.o animalsilvestre.o
 
 all: petfera

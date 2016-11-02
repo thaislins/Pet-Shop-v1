@@ -119,6 +119,32 @@ void Animal::setBatismo(string b) {
 	batismo = b;
 }
 
+istream& operator>> (istream &is, Animal &a) {
+
+	//Veterinario* v = a.getVeterinario();
+	//Tratador* t = a.getTratador();
+
+	is >> a.id;						
+	is.ignore();						
+	getline(is, a.classe, ';'); 		
+	getline(is, a.nome, ';');			
+    getline(is, a.cientifico, ';');	
+    is >> a.sexo;						
+    is.ignore();						
+    is >> a.tamanho;					
+    is.ignore();						
+    getline(is, a.dieta, ';');    		
+    //is >> v->id;
+    is.ignore();
+    //is >> t->id;
+    is.ignore();
+    //
+    getline(is, a.batismo, ';'); 	
+
+    return is;
+}
+
+
 //Anfíbio
 Anfibio::Anfibio() {
 	total_mudas = 0;
@@ -148,11 +174,6 @@ void Anfibio::setUltimaMuda(string um) {
 void Anfibio::Cadastro(Animal *a,ifstream &is) {
 
 	a = new Anfibio;
-	//Anfibio a;
-	//getline(is,a);
-	//cout << a.nome << endl;
-	//cout << a.cientifico << endl;
-	//cout << a;
 }
 
 void Anfibio::Consulta(Animal *a) {
@@ -163,33 +184,10 @@ void Anfibio::Consulta(Animal *a) {
 }
 
 istream& operator>> (istream &is, Anfibio &a) {
-	
-	//Veterinario* v = a.getVeterinario();
-	//Tratador* t = a.getTratador();
 
-	string line;
-	getline(is,line);			
-	istringstream iss(line);
-
-	iss >> a.id;						
-	iss.ignore();						
-	getline(iss, a.classe, ';'); 		
-	getline(iss, a.nome, ';');			
-    getline(iss, a.cientifico, ';');	
-    iss >> a.sexo;						
-    iss.ignore();						
-    iss >> a.tamanho;					
-    iss.ignore();						
-    getline(iss, a.dieta, ';');    		
-    //iss >> v->id;
-    iss.ignore();
-    //iss >> t->id;
-    iss.ignore();
-    //
-    getline(iss, a.batismo, ';'); 	
-    iss >> a.total_mudas;
-    iss.ignore();
-    getline(iss, a.ultima_muda);
+	is >> a.total_mudas;
+    is.ignore();
+    getline(is, a.ultima_muda);
 
     return is;
 }
@@ -228,27 +226,8 @@ void Mamifero::setCorPelo(string cp) {
 }	
 
 istream& operator>> (istream &is, Mamifero &m) {
-	
-	string line;
-	getline(is,line);			
-	istringstream iss(line);
 
-	iss >> m.id;						//ID do animal
-	iss.ignore();						//Ignora o ponto-e-vírgula
-	getline(iss, m.classe, ';'); 		//Classe do animal
-	getline(iss, m.nome, ';');			//Nome do animal
-    getline(iss, m.cientifico, ';');	//Nome científico do animal
-    iss >> m.sexo;						//Sexo do animal
-    iss.ignore();						//Ignora o ponto-e-vírgula
-    iss >> m.tamanho;					//Tamanho do animal
-    iss.ignore();						//Ignora o ponto-e-vírgula
-    getline(iss, m.dieta, ';');    		//Dieta do animal
-    //
-    //
-    getline(iss, m.batismo, ';'); 		//Batismo do animal
-    getline(iss, m.cor_pelo);			//Cor do pelo do animal
-
-
+    getline(is, m.cor_pelo);		
 
     return is;
 }
@@ -276,29 +255,10 @@ void Reptil::setTipoVeneno(string tv) {
 }
 
 /*istream& operator>> (istream &is, Reptil &r) {
-
-	string line;
-	getline(is,line);			
-	istringstream iss(line);
-
-	iss >> r.id;						
-	iss.ignore();						
-	getline(iss, r.classe, ';'); 		
-	getline(iss, r.nome, ';');		
-    getline(iss, r.cientifico, ';');	
-    iss >> r.sexo;					
-    iss.ignore();						
-    iss >> r.tamanho;					
-    iss.ignore();						
-    getline(iss, r.dieta, ';');    		
-    //
-    //
-    getline(iss, r.batismo, ';'); 		
-    iss >> r.venenoso;
-    iss.ignore();
-    getline(iss, r.tipo_veneno);
-
-
+	
+    is >> r.venenoso;
+    is.ignore();
+    getline(is, r.tipo_veneno);
 
     return is;
 }*/
@@ -327,26 +287,9 @@ void Ave::setEnvergadura(int e) {
 
 /*istream& operator>> (istream &is, Ave &a) {
 
-	string line;
-	getline(is,line);			
-	istringstream iss(line);
-
-	iss >> a.id;						
-	iss.ignore();						
-	getline(iss, a.classe, ';'); 		
-	getline(iss, a.nome, ';');			
-    getline(iss, a.cientifico, ';');	
-    iss >> a.sexo;						
-    iss.ignore();						
-    iss >> a.tamanho;					
-    iss.ignore();						
-    getline(iss, a.dieta, ';');    		
-    //
-    //
-    getline(iss, a.batismo, ';'); 		
-    iss >> a.tamanho_bico;
-    iss.ignore();
-    iss >> a.envergadura;
+    is >> a.tamanho_bico;
+    is.ignore();
+    is >> a.envergadura;
 
     return is;
 }*/

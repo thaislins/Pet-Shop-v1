@@ -54,6 +54,8 @@ class Animal {
 		//virtual void Remove() = 0;
 		//virtual void Alteracao() = 0;
 		virtual void Consulta(Animal *a) = 0;
+
+		friend istream& operator>> (istream &is, Animal &a);
 };
 
 class Anfibio : public Animal {

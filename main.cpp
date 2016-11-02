@@ -30,7 +30,7 @@ void CadastroGeral() {
 	}
  	else {
 
- 	Animal* a = new Anfibio;
+ 	Animal *a = new Anfibio;
 
  	int id;
 	string classe, nome;
@@ -39,6 +39,10 @@ void CadastroGeral() {
 	petfera.ignore();
 	getline(petfera, classe, ';');
 	getline(petfera, nome, ';');
+
+	//a->setId(id);
+	//a->setNome(nome);
+	//a->setClasse(classe);
 
 	//petfera >> a;
 	cout << a;
