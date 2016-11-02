@@ -56,6 +56,7 @@ class Animal {
 		virtual void Consulta(Animal *a) = 0;
 
 		friend istream& operator>> (istream &is, Animal &a);
+		friend ostream& operator<< (ostream &os, Animal &a);
 };
 
 class Anfibio : public Animal {

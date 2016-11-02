@@ -144,6 +144,19 @@ istream& operator>> (istream &is, Animal &a) {
     return is;
 }
 
+ostream& operator<< (ostream &os, Animal &a) {
+
+	os << "ID do Animal: " << a.id << endl;
+	os << "Classe do Animal: " << a.classe << endl;	
+	os << "Nome do Animal: " << a.nome << endl;
+	os << "Nome científico do Animal: " << a.cientifico << endl;
+	os << "Sexo do Animal: " << a.sexo << endl;
+	os << "Tamanho do Animal: " << a.tamanho << endl;
+	os << "Dieta do Animal: " << a.dieta << endl;
+	os << "Nome de batismo do Animal: " << a.batismo << endl;
+
+	return os;
+}
 
 //Anfíbio
 Anfibio::Anfibio() {
@@ -194,14 +207,6 @@ istream& operator>> (istream &is, Anfibio &a) {
 
 ostream& operator<< (ostream &os, Anfibio &a) {
 
-	os << "ID do Animal: " << a.id << endl;
-	os << "Classe do Animal: " << a.classe << endl;	
-	os << "Nome do Animal: " << a.nome << endl;
-	os << "Nome científico do Animal: " << a.cientifico << endl;
-	os << "Sexo do Animal: " << a.sexo << endl;
-	os << "Tamanho do Animal: " << a.tamanho << endl;
-	os << "Dieta do Animal: " << a.dieta << endl;
-	os << "Nome de batismo do Animal: " << a.batismo << endl;
 	os << "Total de mudas do Animal: " << a.total_mudas << endl;
 	os << "Ultima muda do Animal: " << a.ultima_muda << endl;
 
