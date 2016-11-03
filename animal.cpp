@@ -135,9 +135,9 @@ istream& operator>> (istream &is, Animal &a) {
     is.ignore();						
     getline(is, a.dieta, ';');    		
     //is >> v->id;
-    is.ignore();
+    //is.ignore();
     //is >> t->id;
-    is.ignore();
+    //is.ignore();
     //
     getline(is, a.batismo, ';'); 	
 
@@ -186,14 +186,12 @@ void Anfibio::setUltimaMuda(string um) {
 
 void Anfibio::Cadastro(Animal *a,ifstream &is) {
 
-	a = new Anfibio;
+	is >> (*a);
 }
 
 void Anfibio::Consulta(Animal *a) {
 
-	a = new Anfibio;
-
-	cout << a;
+	cout << (*a);
 }
 
 istream& operator>> (istream &is, Anfibio &a) {
@@ -230,11 +228,27 @@ void Mamifero::setCorPelo(string cp) {
 	cor_pelo = cp;
 }	
 
+void Mamifero::Cadastro(Animal *a,ifstream &is) {
+	is >> (*a);
+}
+
+void Mamifero::Consulta(Animal *a) {
+	cout << (*a);
+}
+
+
 istream& operator>> (istream &is, Mamifero &m) {
 
-    getline(is, m.cor_pelo);		
+    getline(is, m.cor_pelo,';');		
 
     return is;
+}
+
+ostream& operator<< (ostream &os, Mamifero &m) {
+
+	os << "Cor do pelo do Animal: " << m.cor_pelo << endl;
+
+	return os;
 }
 
 //Reptil
@@ -259,14 +273,32 @@ void Reptil::setTipoVeneno(string tv) {
 	tipo_veneno = tv;
 }
 
-/*istream& operator>> (istream &is, Reptil &r) {
+void Reptil::Cadastro(Animal *a,ifstream &is) {
+	is >> (*a);
+}
+
+void Reptil::Consulta(Animal *a) {
+	cout << (*a);
+}
+
+istream& operator>> (istream &is, Reptil &r) {
 	
     is >> r.venenoso;
     is.ignore();
-    getline(is, r.tipo_veneno);
+    getline(is, r.tipo_veneno,';');
 
     return is;
-}*/
+}
+
+ostream& operator<< (ostream &os, Reptil &r) {
+
+	os << "Venenoso: " << r.venenoso << endl;
+
+	if(r.venenoso == 1) 
+	os << "Tipo de Veneno: " << r.tipo_veneno << endl;
+
+	return os;
+}
 
 //Ave
 Ave::Ave() {
@@ -290,11 +322,28 @@ void Ave::setEnvergadura(int e) {
 	envergadura = e;
 }
 
-/*istream& operator>> (istream &is, Ave &a) {
+void Ave::Cadastro(Animal *a,ifstream &is) {
+	is >> (*a);
+}
+
+void Ave::Consulta(Animal *a) {
+	cout << (*a);
+}
+
+istream& operator>> (istream &is, Ave &a) {
 
     is >> a.tamanho_bico;
     is.ignore();
     is >> a.envergadura;
+    is.ignore();
 
     return is;
-}*/
+}
+
+ostream& operator<< (ostream &os, Ave &a) {
+
+	os << "Tamanho do bico: " << a.tamanho_bico << endl;
+	os << "Envergadura: " << a.envergadura << endl;
+
+	return os;
+}

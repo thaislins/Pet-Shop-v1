@@ -92,7 +92,14 @@ class Mamifero : public Animal {
 		string getCorPelo();
 		void setCorPelo(string cp);
 
+		void Cadastro(Animal *a,ifstream &is);
+		//
+		//
+		void Consulta(Animal *a);
+
 		friend istream& operator>> (istream &is, Mamifero &m);
+		friend ostream& operator<< (ostream &os, Mamifero &a);
+
 };
 
 class Reptil : public Animal {
@@ -108,7 +115,13 @@ class Reptil : public Animal {
 		string getTipoVeneno();
 		void setTipoVeneno(string tv);
 
-		//friend istream& operator>> (istream &is, Reptil &r);
+		void Cadastro(Animal *a,ifstream &is);
+		//
+		//
+		void Consulta(Animal *a);
+
+		friend istream& operator>> (istream &is, Reptil &r);
+		friend ostream& operator<< (ostream &os, Reptil &r);
 };
 
 class Ave : public Animal {
@@ -117,13 +130,20 @@ class Ave : public Animal {
 		int envergadura;
 	public:
 		Ave();
+		~Ave();
 
 		int getTamanhoBico();
 		void setTamanhoBico(int tb);
 		int getEnvergadura();
 		void setEnvergadura(int e);
 
-		//friend istream& operator>> (istream &is, Ave &a); 
+		void Cadastro(Animal *a,ifstream &is);
+		//
+		//
+		void Consulta(Animal *a);
+
+		friend istream& operator>> (istream &is, Ave &a);
+		friend ostream& operator<< (ostream &os, Ave &a); 
 };
 
 

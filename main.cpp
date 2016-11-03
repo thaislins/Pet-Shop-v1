@@ -9,43 +9,50 @@ using std::exit;
 
 #include <string>
 using std::string;
+using std::istringstream;
 
 #include <fstream>
 using std::ifstream;
 using std::istream;
 
-#include "animal.h"
 #include "listsenc.h"
 #include "no.h"
 
-void CadastroGeral() {
+void CadastroGeral(string classe,ifstream &is) {
 
-	ifstream petfera;
-	petfera.open("petfera");
+	cout << endl;
+	cout << "Classe: " << classe << endl;
+	cout << endl;
 
-	if(!petfera){
-		cerr << "O arquivo não foi encontrado" << endl;
-		cerr << "O programa será finalizado" << endl;
-		exit(1);
-	}
- 	else {
+	Animal* a;
 
- 	Animal *a = new Anfibio;
+	if (classe == "Mammalia") {
+		
+		a = new Mamifero;
+		a->Cadastro(a,is);
+		a->Consulta(a);
+		}
+	else if (classe == "Amphibia") { 
 
- 	int id;
-	string classe, nome;
+		a = new Anfibio;
 
-	petfera >> id;
-	petfera.ignore();
-	getline(petfera, classe, ';');
-	getline(petfera, nome, ';');
+		a->Cadastro(a,is);
+		a->Consulta(a);
+		}
+	else if (classe == "Reptilia") {
+		a = new Reptil;
 
-	//a->setId(id);
-	//a->setNome(nome);
-	//a->setClasse(classe);
+		a->Cadastro(a,is);
+		a->Consulta(a);
+		}
+	else if (classe == "Ave") {
+		a = new Ave;
 
-	//petfera >> a;
-	cout << a;
+		a->Cadastro(a,is);
+		a->Consulta(a);	
+		}
+	else {
+		cerr << "Classe inexistente" << endl;
 	}
 }
 
@@ -69,7 +76,28 @@ int main() {
 	cout << endl;
 
 
- 	CadastroGeral();
+	ifstream classetipo,petfera;
+	classetipo.open("petfera");
+	petfera.open("petfera");
 
+	if(!classetipo) {
+		cerr << "O arquivo não foi encontrado" << endl;
+		cerr << "O programa será finalizado" << endl;
+		exit(1);
+	}
+
+ 	else {
+ 		
+ 		string id, classe,line;
+
+		getline(classetipo, id, ';');
+		getline(classetipo, classe, ';');
+		getline(classetipo, line);
+
+ 		CadastroGeral(classe,petfera);
+ 	
+ 		classetipo.close();
+ 		petfera.close();
+ 	}
 	return 0;
 }

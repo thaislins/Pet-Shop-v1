@@ -17,6 +17,7 @@ using std::cout;
 using std::endl;
 
 #include "no.h"
+#include "animal.h"
 
 
 /** 
