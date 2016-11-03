@@ -121,8 +121,10 @@ void Animal::setBatismo(string b) {
 
 istream& operator>> (istream &is, Animal &a) {
 
-	//Veterinario* v = a.getVeterinario();
-	//Tratador* t = a.getTratador();
+	//Veterinario *v = a.getVeterinario();
+	//Tratador *t = a.getTratador();
+
+	int idv,idt;
 
 	is >> a.id;						
 	is.ignore();						
@@ -134,11 +136,10 @@ istream& operator>> (istream &is, Animal &a) {
     is >> a.tamanho;					
     is.ignore();						
     getline(is, a.dieta, ';');    		
-    //is >> v->id;
+    //is >> idv;
     //is.ignore();
-    //is >> t->id;
+    //is >> idt;
     //is.ignore();
-    //
     getline(is, a.batismo, ';'); 	
 
     return is;
@@ -146,14 +147,14 @@ istream& operator>> (istream &is, Animal &a) {
 
 ostream& operator<< (ostream &os, Animal &a) {
 
-	os << "ID do Animal: " << a.id << endl;
-	os << "Classe do Animal: " << a.classe << endl;	
-	os << "Nome do Animal: " << a.nome << endl;
-	os << "Nome científico do Animal: " << a.cientifico << endl;
-	os << "Sexo do Animal: " << a.sexo << endl;
-	os << "Tamanho do Animal: " << a.tamanho << endl;
-	os << "Dieta do Animal: " << a.dieta << endl;
-	os << "Nome de batismo do Animal: " << a.batismo << endl;
+	os << "Identificador do animal: " << a.id << endl;
+	os << "Classe do animal: " << a.classe << endl;	
+	os << "Nome do animal: " << a.nome << endl;
+	os << "Nome científico do animal: " << a.cientifico << endl;
+	os << "Sexo do animal: " << a.sexo << endl;
+	os << "Tamanho médio em metros: " << a.tamanho << endl;
+	os << "Dieta predominante: " << a.dieta << endl;
+	os << "Nome de batismo: " << a.batismo << endl;
 
 	return os;
 }
@@ -207,6 +208,7 @@ ostream& operator<< (ostream &os, Anfibio &a) {
 
 	os << "Total de mudas do Animal: " << a.total_mudas << endl;
 	os << "Ultima muda do Animal: " << a.ultima_muda << endl;
+	os << endl;
 
 	return os;
 }
@@ -247,6 +249,7 @@ istream& operator>> (istream &is, Mamifero &m) {
 ostream& operator<< (ostream &os, Mamifero &m) {
 
 	os << "Cor do pelo do Animal: " << m.cor_pelo << endl;
+	os << endl;
 
 	return os;
 }
@@ -296,6 +299,7 @@ ostream& operator<< (ostream &os, Reptil &r) {
 
 	if(r.venenoso == 1) 
 	os << "Tipo de Veneno: " << r.tipo_veneno << endl;
+	os << endl;
 
 	return os;
 }
@@ -344,6 +348,7 @@ ostream& operator<< (ostream &os, Ave &a) {
 
 	os << "Tamanho do bico: " << a.tamanho_bico << endl;
 	os << "Envergadura: " << a.envergadura << endl;
+	os << endl;
 
 	return os;
 }

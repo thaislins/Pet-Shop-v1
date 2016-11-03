@@ -18,22 +18,15 @@ using std::istream;
 #include "listsenc.h"
 #include "no.h"
 
-void CadastroGeral(string classe,ifstream &is) {
-
-	cout << endl;
-	cout << "Classe: " << classe << endl;
-	cout << endl;
-
-	Animal* a;
+void CadastroGeralAnimal(Animal *a, string classe, ifstream &is) {
 
 	if (classe == "Mammalia") {
-		
 		a = new Mamifero;
+
 		a->Cadastro(a,is);
 		a->Consulta(a);
 		}
 	else if (classe == "Amphibia") { 
-
 		a = new Anfibio;
 
 		a->Cadastro(a,is);
@@ -57,6 +50,26 @@ void CadastroGeral(string classe,ifstream &is) {
 }
 
 
+void CadastroGeralFuncionario(Funcionario *f,string tipo, ifstream &is) {
+
+	if (tipo == "Veterinario") {
+		f = new Veterinario;
+
+		f->Cadastro(f,is);
+		f->Consulta(f);
+	}
+	else if (tipo == "Tratador") {
+		f = new Tratador;
+
+		f->Cadastro(f,is);
+		f->Consulta(f);
+	}
+	else {
+		cerr << "Função Inexistente" << endl;
+	}
+}
+
+
 int main() {
 
 	cout << endl;
@@ -76,11 +89,12 @@ int main() {
 	cout << endl;
 
 
-	ifstream classetipo,petfera;
+	ifstream classetipo,petfera,funcionarios;
+	funcionarios.open("funcionarios");
 	classetipo.open("petfera");
 	petfera.open("petfera");
 
-	if(!classetipo) {
+	if(!classetipo || !funcionarios) {
 		cerr << "O arquivo não foi encontrado" << endl;
 		cerr << "O programa será finalizado" << endl;
 		exit(1);
@@ -88,16 +102,24 @@ int main() {
 
  	else {
  		
- 		string id, classe,line;
+ 		Animal *a;
+ 		Funcionario *f;
+
+ 		string id, classe,line,tipof;
 
 		getline(classetipo, id, ';');
 		getline(classetipo, classe, ';');
 		getline(classetipo, line);
+		getline(funcionarios, tipof, ';');
 
- 		CadastroGeral(classe,petfera);
- 	
+		cout <<  "Tipo Funcionario: " << tipof << endl;
+
+ 		CadastroGeralAnimal(a,classe,petfera);
+ 		CadastroGeralFuncionario(f,tipof,funcionarios);
+ 		
  		classetipo.close();
  		petfera.close();
+ 		funcionarios.close();
  	}
 	return 0;
 }
