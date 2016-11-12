@@ -1,3 +1,12 @@
+/**
+ * @file	funcionario.h
+ * @brief	Definição da classe Funcionario e seus respectivos
+ *			tipos: Veterinario e Tratador. 
+ * @author	Thais Fernandes Lins
+ * @since	28/10/2016
+ * @date	06/11/2016
+ */
+
 #include <string>
 using std::string;
 
@@ -8,19 +17,26 @@ using std::ostream;
 #ifndef FUNCIONARIO_H
 #define FUNCIONARIO_H
 
+/** 
+ * @class 	Funcionario funcionario.h
+ * @brief 	Classe abstrata que representa um funcionario
+ * @details	Os atributos de um funcionario são o id, seu tipo (função), o nome, 
+ *			o cpf, a idade, o tipo sanguínero, o fator RH e sua especialidade
+ */
 class Funcionario {
 	protected:
 		int id;
+		string tipofunc;
 		string nome;
 		string cpf;
 		short idade;
 		char tipo_sanguineo;
-		char fatorRH;
+		string fatorRH;
 		string especialidade;
 	public:
 		Funcionario();
-		~Funcionario();
-
+		Funcionario(int i, string tf, string n, string c, short ia, char ts, string rh, string e);
+		virtual ~Funcionario() = 0;
 		int getId();
 		void setId(int i);
 		string getNome();
@@ -31,48 +47,39 @@ class Funcionario {
 		void setIdade(short i);
 		char getTipoS();
 		void setTipoS(char ts);
-		char getFatorRH();
-		void setFatorRH(char rh);
+		string getFatorRH();
+		void setFatorRH(string rh);
 		string getEspecialidade();
 		void setEspecialidade(string e);
-
-		virtual void Cadastro(Funcionario *f,ifstream &is) = 0;
-		//virtual void Remove() = 0;
-		//virtual void Alteracao() = 0;
-		virtual void Consulta(Funcionario *f) = 0;
+		string getTipoFunc();
+		void setTipoFunc(string t);
 
 		friend istream& operator>> (istream &is, Funcionario &f);
 		friend ostream& operator<< (ostream &os, Funcionario &f);
 };
 
+/** 
+ * @class 	Veterinario funcionario.h
+ * @brief 	Classe que representa um veterinario
+ * @details	Os atributos de um funcionario são herdados da sua classe 
+ * 			mãe que é a classe "Funcionario"
+ */
 class Veterinario : public Funcionario {
-		string tipo;
 	public:
 		Veterinario();
 		~Veterinario();
-
-		void Cadastro(Funcionario *f,ifstream &is);
-		//virtual void Remove() = 0;
-		//virtual void Alteracao() = 0;
-		void Consulta(Funcionario *f);
-
-		friend istream& operator>> (istream &is, Veterinario &v);
-		friend ostream& operator<< (ostream &os, Veterinario &v);
 };
 
+/** 
+ * @class 	Tratador funcionario.h
+ * @brief 	Classe que representa um tratador
+ * @details	Os atributos de um funcionario são herdados da sua classe 
+ * 			mãe que é a classe "Funcionario"
+ */
 class Tratador : public Funcionario {
-		string tipo;
 	public:
 		Tratador();
 		~Tratador();
-
-		void Cadastro(Funcionario *f,ifstream &is);
-		//virtual void Remove() = 0;
-		//virtual void Alteracao() = 0;
-		void Consulta(Funcionario *f);
-
-		friend istream& operator>> (istream &is, Tratador &t);
-		friend ostream& operator<< (ostream &os, Tratador &t);
 };
 
 #endif

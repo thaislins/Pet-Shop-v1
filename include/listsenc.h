@@ -4,6 +4,7 @@
  *			lista simplesmente encadeada generica para armazenar dados de
  *			qualquer tipo
  * @author	Everton Cavalcante (everton@dimap.ufrn.br)
+ *			Modificações por: Thais Fernandes Lins
  * @since	06/10/2016
  * @date	11/10/2016
  */
@@ -17,7 +18,6 @@ using std::cout;
 using std::endl;
 
 #include "no.h"
-#include "animal.h"
 
 
 /** 
@@ -55,7 +55,9 @@ class ListaSimplEnc {
 		void removerFim();					/**< Remove do fim da lista			*/
 		bool listaVazia();					/**< Verifica se a lista esta vazia */
 		void listarElementos();				/**< Imprime os elementos da lista	*/
-		int buscar(T d);					/**< Busca por elemento na lista	*/
+		int buscar(int id);					/**< Busca por elemento na lista	*/
+		int buscar2(int id);
+		T retornaElemento(int id);
 };
 
 
@@ -142,7 +144,7 @@ void ListaSimplEnc<T>::inserirInicio(T d) {
  */
 template<class T>
 void ListaSimplEnc<T>::inserirPosicao(T d, int pos) {
-	if (pos > tamanho) {
+	if (pos > tamanho + 1) {
 		cerr << "Nao e possivel inserir: posicao invalida" << endl;
 	} else {
 		if (listaVazia()) {
@@ -280,7 +282,7 @@ void ListaSimplEnc<T>::listarElementos() {
 	} else {
 		No<T>* p = this->inicio;
 		while (p != NULL) {
-			cout << p->getDado() << " -> ";
+			cout << *(p->getDado()) << " -> ";
 			p = p->getProximo();	
 		}
 		cout << "NULL" << endl;
@@ -294,13 +296,13 @@ void ListaSimplEnc<T>::listarElementos() {
  * @return  Posicao na qual o dado buscado foi encontrado ou -1, caso ele nao
  *			esteja dentre os nos da lista.
  */
-template<class T>
-int ListaSimplEnc<T>::buscar(T d) {
+ template<class T>
+int ListaSimplEnc<T>::buscar(int id) {
 	int posicao = -1;
 	No<T>* p = this->inicio;
 	while (p != NULL) {
 		posicao++;
-		if (p->getDado() == d) {
+		if (p->getDado()->getId() == id) {
 			return posicao;
 		} else {
 			p = p->getProximo();
@@ -309,5 +311,48 @@ int ListaSimplEnc<T>::buscar(T d) {
 	return posicao;
 }
 
+/** 
+ * @details Percorre-se a lista ate o final (ou seja, quando o ultimo no apontar
+ *			para nulo) utilizando um ponteiro auxiliar, comparando-se o dado
+ *			armazenado em cada no com o passado por parametro.
+ * @return  Identificador se o dado buscado foi encontrado ou -1, caso ele nao
+ *			esteja dentre os nos da lista.
+ */
+template<class T>
+int ListaSimplEnc<T>::buscar2(int id) {
+	No<T>* p = this->inicio;
+	while (p != NULL) {
+		if (p->getDado()->getId() == id) {
+			return id;
+		} else {
+			p = p->getProximo();
+		}
+	}
+	return -1;
+}
+
+/** 
+ * @details Percorre-se a lista ate o final (ou seja, quando o ultimo no apontar
+ *			para nulo) utilizando um ponteiro auxiliar, comparando-se o dado
+ *			armazenado em cada no com o passado por parametro.
+ * @return  Dado caso ele seja encontrado ou nullptr, caso ele nao
+ *			esteja dentre os nos da lista.
+ */
+template<class T>
+T ListaSimplEnc<T>::retornaElemento(int id) {
+	int posicao = -1;
+	No<T>* p = this->inicio;
+	while (p != NULL) {
+		posicao++;
+		if (p->getDado()->getId() == id) {
+			return p->getDado();
+		} else {
+			p = p->getProximo();
+		}
+	}
+	return nullptr;	
+}
 
 #endif
+
+
