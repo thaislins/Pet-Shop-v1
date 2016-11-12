@@ -4,24 +4,24 @@
 PROG = petfera
 CC = g++
 CPPFLAGS = -Wall -pedantic -std=c++11
-OBJS = main.o funcionario.o animal.o animalsilvestre.o
+OBJS = main.o funcionario.o animal.o op.o
 
 all: petfera
 
-petfera: main.o funcionario.o animal.o animalsilvestre.o 
-	$(CC) main.o funcionario.o animal.o animalsilvestre.o -o pf
+petfera: main.o funcionario.o animal.o op.o
+	$(CC) main.o funcionario.o animal.o op.o -o ../bin/pf
 
 main.o: main.cpp
 	$(CC) $(CPPFLAGS) -c main.cpp
+
+op.o:   op.cpp
+	$(CC) $(CPPFLAGS) -c op.cpp
 
 funcionario.o: funcionario.cpp
 	       $(CC) $(CPPFLAGS) -c funcionario.cpp
 
 animal.o: animal.cpp
 	  $(CC) $(CPPFLAGS) -c animal.cpp
-
-animalsilvestre.o: animalsilvestre.cpp
-		   $(CC) $(CPPFLAGS) -c animalsilvestre.cpp
 
 clean:
 	rm -rf *o $(OBJS) 	
